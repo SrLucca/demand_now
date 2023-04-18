@@ -18,3 +18,7 @@ def homeView(request):
         Demanda.objects.create(titulo=titulo, descricao=descricao, prazo=data, criado_por=user)
 
     return render(request, 'pages/home.html')
+
+
+def demandasView(request):
+    return render(request, 'pages/verDemandas.html')

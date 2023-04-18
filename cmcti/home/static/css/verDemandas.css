@@ -1,0 +1,21 @@
+.container-demandas{
+    background: #A0FFAA;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 19px;
+}
+
+.container-demandas h3{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 24px;
+    text-align: left;
+
+    color: #819083;
+}
+
+.container-demandas p{
+    text-align: left;
+
+    color: #819083;
+}
