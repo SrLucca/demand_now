@@ -2,11 +2,17 @@
 
 {% block content %}
 
+
 <div class="container text-center">
+
+    {% for demanda in demandas %}
     <div class="container container-demandas">
-        <h3 class="mt-5 pt-3">Titulo</h3>
-        <p>descricao descricao descricao descricao descricao descricao</p> 
+        <h3 class="mt-5 pt-3">{{demanda.titulo}}</h3>
+        <p>{{demanda.descricao}}</p> 
     </div>
+    {% endfor %}
+
 </div>
+
 
 {% endblock %}
