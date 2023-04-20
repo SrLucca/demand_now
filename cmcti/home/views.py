@@ -1,24 +1,31 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from home.models import Demanda
-from django.contrib.auth import get_user_model
+from register.models import CustomUser
 
 # Create your views here.
 
 @login_required(login_url='/entrar')
 def homeView(request):
     if request.method == 'POST':
-        user_model = get_user_model()
-        user = user_model.objects.get(email=request.user.email)
+        user = CustomUser.objects.get(email=request.user.email)
         data = ""
         titulo = str(request.POST['titulo'])
         descricao = str(request.POST['descricao'])
+        file = request.POST or None
+
         if request.POST['data']:
             data = str(request.POST['data'])
 
-        Demanda.objects.create(titulo=titulo, descricao=descricao, prazo=data, criado_por=user)
+        if request.POST['doc']:
+            file = request.POST['doc']
+        
+
+        demanda = Demanda.objects.create(titulo=titulo, descricao=descricao, prazo=data, documento=file)
+        demanda.criado_por.add(user)
 
     return render(request, 'pages/home.html')
+
 
 @login_required(login_url='/entrar')
 def demandasView(request):

@@ -17,8 +17,13 @@ def loginView(request):
         return redirect('/')
 
     else:
-        print('ero')
+        pass
     return render(request, 'pages/login.html')
+
+
+def registerView(request):
+
+    return render(request, 'pages/register.html')
 
 @login_required(login_url='/entrar')
 def logoutView(request): 
