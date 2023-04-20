@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 
 # Create your views here.
 
+@login_required(login_url='/entrar')
 def homeView(request):
     if request.method == 'POST':
         user_model = get_user_model()
@@ -19,7 +20,7 @@ def homeView(request):
 
     return render(request, 'pages/home.html')
 
-
+@login_required(login_url='/entrar')
 def demandasView(request):
 
     demandas = Demanda.objects.all()

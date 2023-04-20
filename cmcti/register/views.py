@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def loginView(request):
@@ -9,7 +10,7 @@ def loginView(request):
         email = request.POST['email']
         senha = request.POST['senha']
 
-    user = authenticate(request, email=email, password=senha)
+    user = authenticate(request, username=email, password=senha)
     
     if user is not None:
         login(request, user)
@@ -18,3 +19,8 @@ def loginView(request):
     else:
         print('ero')
     return render(request, 'pages/login.html')
+
+@login_required(login_url='/entrar')
+def logoutView(request): 
+    logout(request)
+    return HttpResponseRedirect('/entrar')
