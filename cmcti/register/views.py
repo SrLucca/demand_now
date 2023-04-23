@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from register.forms import CustomUserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 def loginView(request):
@@ -23,7 +25,18 @@ def loginView(request):
 
 def registerView(request):
 
-    return render(request, 'pages/register.html')
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Cadastro realizado com sucesso!.")
+            return redirect('/')
+        else:
+            messages.error(request, "Campos inválidos, preencha novamente.")
+    else:
+        form = CustomUserCreationForm()
+
+    return render(request, 'pages/register.html', {'form':form})
 
 @login_required(login_url='/entrar')
 def logoutView(request): 
