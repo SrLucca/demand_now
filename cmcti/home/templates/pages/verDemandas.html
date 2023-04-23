@@ -1,14 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% if messages %}
+    {% for message in messages %}
+        {% if 'error' in message.tags %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+{% endif %}
 
 <div class="container text-center">
 
     {% for demanda in demandas %}
     <div class="container container-demandas">
         <h3 class="mt-5 pt-3">{{demanda.titulo}}</h3>
-        <p>{{demanda.descricao}}</p> 
+        <p>{{demanda.descricao}}</p>
+        <p>Criado por: {% for criador in demanda.criado_por.all %} {{criador}} {% endfor %} </p>
+        {% if demanda.prazo %}
+            <p>Prazo: {{ demanda.prazo }}</p>
+        {% endif %}
+        {% if request.user.is_staff %}
+        <input type="radio" id="concluida">
+        <label for="concluida">Concluida</label>
+        {% else %}
+        {% endif %}
     </div>
     {% endfor %}
 
