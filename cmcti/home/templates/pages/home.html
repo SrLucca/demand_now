@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        {% if 'error' in message.tags %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+{% endif %}
+
 <form action="" method="post" class="form-group text-center">
     {% csrf_token %}
     <h5>Titulo da Demanda</h5>

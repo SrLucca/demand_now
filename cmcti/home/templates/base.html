@@ -30,9 +30,10 @@
                 <img src="{{request.user.profile.profile_image.url}}" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="#">Configurações</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/sair">Sair</a></li>
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Configurações</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/sair">Sair</a></li>
                 </ul>
             </div>
             {% else %}
@@ -53,13 +54,18 @@
         <div style="background-color: #086c10;" class="container-fluid">
             <footer class="py-3 my-4">
               <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a style="color: white;" href="/" class="nav-link px-2">Pagina Inicial</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a style="color: white;" href="/perfil" class="nav-link px-2">Perfil</a></li>
+                    <li class="nav-item"><a style="color: white;" href="/sobre" class="nav-link px-2">Sobre</a></li>
+                {% else %}
+                <li class="nav-item"><a style="color: white;" href="/entrar" class="nav-link px-2">Entrar</a></li>
+                <li class="nav-item"><a style="color: white;" href="/cadastrar" class="nav-link px-2">Cadastrar</a></li>
+                
+                <li class="nav-item"><a style="color: white;" href="/sobre" class="nav-link px-2">Sobre</a></li>
+                {% endif %}
               </ul>
-              <p class="text-center text-muted">© 2022 Company, Inc</p>
+              <p class="text-center" style="color: white;">© 2023 Secretaria de Desenvolvimento Econômico de Jataí</p>
             </footer>
           </div>
 </body>
