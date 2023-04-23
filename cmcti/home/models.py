@@ -9,6 +9,7 @@ class Demanda(models.Model):
     prazo = models.DateField(blank=True)
     documento = models.FileField(blank=True, upload_to='documentos/', null=True)
     criado_por = models.ManyToManyField(CustomUser)
+    concluida = models.BooleanField(blank=True, null=True)
 
     def __str__(self):
         return self.titulo
