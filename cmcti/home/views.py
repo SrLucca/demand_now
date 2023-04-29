@@ -32,4 +32,7 @@ def demandasView(request):
 
     demandas = Demanda.objects.all()
 
+    for objects in demandas:
+        print(objects.concluida)
+
     return render(request, 'pages/verDemandas.html', {'demandas':demandas})

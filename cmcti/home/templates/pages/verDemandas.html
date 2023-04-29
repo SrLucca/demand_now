@@ -27,8 +27,16 @@
             <p>Prazo: {{ demanda.prazo }}</p>
         {% endif %}
         {% if request.user.is_staff %}
-        <input type="radio" id="concluida">
-        <label for="concluida">Concluida</label>
+            {% if demanda.concluida == True %}
+                <input type="radio" id="concluida" checked>
+                <label for="concluida">Concluida</label>
+            {% else %}
+                <form action="" id="checkConcluida" method="post">
+                    {% csrf_token %}
+                    <input type="radio" id="concluida" name="concluida" onclick="document.getElementById('checkConcluida').submit();">
+                    <label for="concluida">Concluida</label>
+                </form>
+            {% endif %}
         {% else %}
         {% endif %}
     </div>
