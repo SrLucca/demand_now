@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from register.forms import CustomUserCreationForm
 from django.contrib import messages
+from register.models import CustomUser, Profile
 
 # Create your views here.
 def loginView(request):
@@ -42,3 +43,9 @@ def registerView(request):
 def logoutView(request): 
     logout(request)
     return HttpResponseRedirect('/entrar')
+
+@login_required(login_url='/entrar')
+def configProfile(request):
+    user = CustomUser.objects.filter(username=request.user.username)
+
+    return render(request, 'pages/config_profile.html', {'objetos': user})
