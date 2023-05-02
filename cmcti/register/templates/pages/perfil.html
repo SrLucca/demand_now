@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container text-center container-perfil">
+    {% for objs in objetos %}
+
+        <img src="{{objs.profile.profile_image.url}}" alt="">
+        
+        {% if request.user.is_staff %}
+        <div>
+            <h1>{{request.user.username}}</h1> 
+            <p style="color: red; background-color: #A0FFAA; border-radius: 10px; font-weight: 700;" >Diretoria</p>
+        </div>
+            {% else %}
+            <h1>{{request.user.username}}</h1>
+        {% endif %}
+
+        <p>Seu email: {{request.user.email}}</p>
+
+        
+
+        <form method="post" id="changeEmail">
+            <label for="email">Novo email: </label>
+            <input type="email" name="novo_email" id="email">
+            <br>
+            <br>
+            <button type="submit">Alterar</button>
+
+        </form>
+    {% endfor %}
+</div>
+
+{% endblock %}

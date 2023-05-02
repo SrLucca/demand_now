@@ -48,4 +48,4 @@ def logoutView(request):
 def configProfile(request):
     user = CustomUser.objects.filter(username=request.user.username)
 
-    return render(request, 'pages/config_profile.html', {'objetos': user})
+    return render(request, 'pages/perfil.html', {'objetos': user})
