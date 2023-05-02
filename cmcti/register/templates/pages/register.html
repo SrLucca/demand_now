@@ -16,9 +16,45 @@
 {% else %}
 {% endif %}
 
-<form action="" method="post" class="form-group text-center">
+<form action="" method="post" class="form-group text-center" id="form-cadastro">
     {% csrf_token %}
-    {{form}}
-    <button type="submit">Cadastrar</button>
+    <div style="width: 50%;" class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Email</span>
+        </div>
+        {{form.email}}
+    </div>
+
+    <div style="width: 50%;" class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Primeiro Nome</span>
+        </div>
+        {{form.first_name}}
+    </div>
+
+    <div style="width: 50%;" class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Sobrenome</span>
+        </div>
+        {{form.last_name}}
+    </div>
+
+    <div style="width: 50%;" class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Senha</span>
+        </div>
+        {{form.password1}}
+    </div>
+    
+
+    <div style="width: 50%;" class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Confirmação de senha</span>
+        </div>
+        {{form.password2}}
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-success" style="width: 30%;">Entrar</button>
 </form>
 {% endblock %}
