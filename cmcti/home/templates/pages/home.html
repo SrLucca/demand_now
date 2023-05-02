@@ -19,21 +19,45 @@
 
 <form action="" method="post" class="form-group text-center">
     {% csrf_token %}
-    <h5>Titulo da Demanda</h5>
-    <input type="text" name="titulo" required>
-    <h5>Descrição da Demanda</h5>
-    <textarea name="descricao" id="" cols="30" rows="10" required></textarea>
+    <br>
+
+    <div style="width: 50%;" class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Título da Demanda/Documento</span>
+        </div>
+        <input type="text" class="form-control" name="titulo" aria-describedby="basic-addon1">
+        </div>
+
+        <br>
+
+        <div style="width: 50%;" class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Descrição</span>
+            </div>
+            <textarea class="form-control" name="descricao"></textarea>
+        </div>
+
+        <br>
 
     <h5>Possui prazo de conclusão?</h5>
     <input onclick="informaData(1)" type="radio" id="sim" name="prazo" value="Sim">
     <label for="sim">Sim</label><br>
-    <input class="text-center" style="display: none;" type="date" name="data" id="data">
+    <input class="text-center" style="display: none;     margin-left: auto;
+    margin-right: auto;" type="date" name="data" id="data">
     <input onclick="informaData(2)" type="radio" id="nao" name="prazo" value="Nao">
     <label for="nao">Não</label><br>
-    <input id="doc" type="file" name="doc">
-    <label for="doc">Documento(Opicional)</label>
 
-    <button type="submit">Cadastrar</button>
+        <br>
+
+    <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile02">
+        </div>
+      </div>
+
+      <br>
+
+    <button type="submit" class="btn btn-success" style="width: 30%;">Cadastrar</button>
 </form>
 
 <script>
