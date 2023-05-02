@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from home.models import Demanda
 from register.models import CustomUser
+from django.contrib import messages
 
 # Create your views here.
 
@@ -32,7 +33,16 @@ def demandasView(request):
 
     demandas = Demanda.objects.all()
 
-    for objects in demandas:
-        print(objects.concluida)
 
     return render(request, 'pages/verDemandas.html', {'demandas':demandas})
+
+@login_required(login_url='/entrar')
+def demandaConcluida(request, id):
+
+    demanda = Demanda.objects.get(pk=id)
+
+    demanda.concluida = True
+    demanda.save()
+
+    messages.add_message(request, messages.SUCCESS, "Demanda marcada como conluída!")
+    return HttpResponseRedirect('/demandas')

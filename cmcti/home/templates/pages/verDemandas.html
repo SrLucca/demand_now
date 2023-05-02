@@ -28,14 +28,23 @@
         {% endif %}
         {% if request.user.is_staff %}
             {% if demanda.concluida == True %}
-                <input type="radio" id="concluida" checked>
-                <label for="concluida">Concluida</label>
+            <div class="form-check" style="display: flex;
+            justify-content: flex-end;">
+                <input class="form-check-input" type="checkbox" value="" id="concluida" name="concluida" checked disabled>
+                <label class="form-check-label" for="concluida">
+                    Concluída
+                </label>
+            </div>
             {% else %}
-                <form action="" id="checkConcluida" method="post" style="display: flex;
+                <form action="demanda/{{demanda.id}}" id="checkConcluida" method="post" style="display: flex;
                 justify-content: flex-end;">
                     {% csrf_token %}
-                    <input type="radio" id="concluida" name="concluida" onclick="document.getElementById('checkConcluida').submit();">
-                    <label for="concluida">Concluida</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="concluida" name="concluida" onclick="document.getElementById('checkConcluida').submit();">
+                        <label class="form-check-label" for="concluida">
+                            Concluída
+                        </label>
+                    </div>
                 </form>
             {% endif %}
         {% else %}
