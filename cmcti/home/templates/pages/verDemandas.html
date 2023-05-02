@@ -24,14 +24,15 @@
         <p>{{demanda.descricao}}</p>
         <p>Criado por: {% for criador in demanda.criado_por.all %} {{criador}} {% endfor %} </p>
         {% if demanda.prazo %}
-            <p>Prazo: {{ demanda.prazo }}</p>
+            <p style="color: red; font-weight: 600;">Prazo: {{ demanda.prazo }}</p>
         {% endif %}
         {% if request.user.is_staff %}
             {% if demanda.concluida == True %}
                 <input type="radio" id="concluida" checked>
                 <label for="concluida">Concluida</label>
             {% else %}
-                <form action="" id="checkConcluida" method="post">
+                <form action="" id="checkConcluida" method="post" style="display: flex;
+                justify-content: flex-end;">
                     {% csrf_token %}
                     <input type="radio" id="concluida" name="concluida" onclick="document.getElementById('checkConcluida').submit();">
                     <label for="concluida">Concluida</label>
