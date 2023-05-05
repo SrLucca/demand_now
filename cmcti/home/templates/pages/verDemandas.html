@@ -19,7 +19,7 @@
 <div class="container text-center">
 
     {% for demanda in demandas %}
-    <div class="container container-demandas">
+    <div class="container container-demandas mb-3">
         <h3 class="mt-5 pt-3">{{demanda.titulo}}</h3>
         <p>{{demanda.descricao}}</p>
         <p>Criado por: {% for criador in demanda.criado_por.all %} {{criador}} {% endfor %} </p>

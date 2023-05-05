@@ -53,22 +53,116 @@
         {% block content %}
         {% endblock %}
 
-        <div style="background-color: #086c10; position: absolute; bottom: 0;" class="container-fluid">
-            <footer class="py-3 my-4">
-              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a style="color: white;" href="/" class="nav-link px-2">Pagina Inicial</a></li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item"><a style="color: white;" href="/perfil" class="nav-link px-2">Perfil</a></li>
-                    <li class="nav-item"><a style="color: white;" href="/sobre" class="nav-link px-2">Sobre</a></li>
-                {% else %}
-                <li class="nav-item"><a style="color: white;" href="/entrar" class="nav-link px-2">Entrar</a></li>
-                <li class="nav-item"><a style="color: white;" href="/cadastrar" class="nav-link px-2">Cadastrar</a></li>
-                
-                <li class="nav-item"><a style="color: white;" href="/sobre" class="nav-link px-2">Sobre</a></li>
-                {% endif %}
-              </ul>
-              <p class="text-center" style="color: white;">© 2023 Secretaria de Desenvolvimento Econômico de Jataí</p>
-            </footer>
-          </div>
+        <!-- Footer -->
+    <footer style="background-color: #086c10;" class="text-center text-lg-start text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+        <!-- Left -->
+    
+        <!-- Right -->
+        <div>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+            <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+    
+        <!-- Section: Links  -->
+        <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 style="color: white;" class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem"></i>Secretária de Desenvolvimento Econômico
+                </h6>
+                <p style="color: white;">
+                    Av. Veriano de Oliveira Lima, 1239 - Vila Santa Maria, Jataí - GO, 75800-093
+                </p>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 style="color: white;" class="text-uppercase fw-bold mb-4">
+                Navegar
+                </h6>
+                <p style="color: white;">
+                <a href="/entrar" class="text-reset">Entrar</a>
+                </p>
+                <p style="color: white;">
+                <a href="/cadastrar" class="text-reset">Cadastrar</a>
+                </p>
+                <p style="color: white;">
+                <a href="/sobre" class="text-reset">Sobre</a>
+                </p>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 style="color: white;" class="text-uppercase fw-bold mb-4">
+                Links Úteis
+                </h6>
+                <p style="color: white;">
+                <a  href="#!" class="text-reset">Whatsapp</a>
+                </p>
+                <p style="color: white;">
+                <a  href="https://www.jatai.go.gov.br/secretaria-de-desenvolvimento-economico/" class="text-reset">Secretaria</a>
+                </p>
+                <p style="color: white;">
+                <a  href="https://www.jatai.go.leg.br/ta/8597/text?" class="text-reset">Legislação</a>
+                </p>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 style="color: white;" class="text-uppercase fw-bold mb-4">Contato</h6>
+                <p style="color: white;"><i  class="fas fa-home me-3"></i> Telefone: (64) 3632-4028</p>
+                <p style="color: white;">
+                <i class="fas fa-envelope me-3"></i>
+                amarcusviera@gmail.com
+                </p>
+                <p style="color: white;"><i class="fas fa-phone me-3"></i>(64) 98425-5667</p>
+            </div>
+            <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+        </section>
+        <!-- Section: Links  -->
+    
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 </body>
 </html>
