@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from home.models import Demanda
 from register.models import CustomUser
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
@@ -46,3 +47,11 @@ def demandaConcluida(request, id):
 
     messages.add_message(request, messages.SUCCESS, "Demanda marcada como conluída!")
     return HttpResponseRedirect('/demandas')
+
+@staff_member_required(login_url="/")
+@login_required(login_url='/entrar')
+def usuariosView(request):
+
+    usuarios = CustomUser.objects.all()
+
+    return render(request, 'pages/usuarios.html', {'usuarios':usuarios})
