@@ -24,7 +24,20 @@
     </div>
 </form>
 
+<div class="container infra">
+    <div class="row">
+        <div class="col opcoes">
+            <div id="ddos" class="ddos" onclick="change(1)">
+                <h1 class="text-center">Demandas</h1>
+            </div>
 
+            <div id="rede" class="rede" onclick="change(2)">
+                <h1 class="text-center">Documentos</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="line"></div>
 
 <div class="container text-center">
     {% for demanda in demandas %}
@@ -63,5 +76,22 @@
 
 </div>
 
+<script>
+    function change(id){
 
+        if(id == 1){
+            document.getElementById('ddos').style.boxShadow = 'inset 0px -40px 49px -34px rgba(0,0,0,0.52)';
+            document.getElementById('rede').style.boxShadow = 'none';
+            
+
+        }
+
+        if(id == 2){
+            document.getElementById('ddos').style.boxShadow = 'none';
+            document.getElementById('rede').style.boxShadow = 'inset 0px -40px 49px -34px rgba(0,0,0,0.52)';
+
+        }
+
+    }
+</script>
 {% endblock %}
