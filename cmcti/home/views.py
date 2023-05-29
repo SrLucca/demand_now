@@ -14,6 +14,7 @@ def homeView(request):
         data = ""
         titulo = str(request.POST['titulo'])
         descricao = str(request.POST['descricao'])
+        tipo = str(request.POST['tipo'])
         file = request.POST or None
 
         if request.POST['data']:
@@ -23,9 +24,10 @@ def homeView(request):
             file = request.POST['doc']
         
 
-        demanda = Demanda.objects.create(titulo=titulo, descricao=descricao, prazo=data, documento=file)
+        demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, documento=file)
         demanda.criado_por.add(user)
 
+        messages.add_message(request, messages.SUCCESS, f"{tipo} cadastrada(o) com sucesso!")
     return render(request, 'pages/home.html')
 
 
