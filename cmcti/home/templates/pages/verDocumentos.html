@@ -27,11 +27,11 @@
 <div class="container infra">
     <div class="row">
         <div class="col opcoes">
-            <div id="ddos" class="ddos" onclick="change(1)">
+            <div id="ddos2" class="ddos2" onclick="change(1)">
                 <a style="text-decoration: none;" href="/demandas"><h1 class="text-center">Demandas</h1></a>
             </div>
 
-            <div id="rede" class="rede" onclick="change(2)">
+            <div id="rede2" class="rede2" onclick="change(2)">
                 <a style="text-decoration: none;" href="/documentos"><h1 class="text-center">Documentos</h1></a>
             </div>
         </div>
@@ -41,10 +41,13 @@
 
 <div class="container text-center">
     {% for demanda in demandas %}
-        {% if demanda.tipo == 'Demanda' %}
+        {% if demanda.tipo == 'Documento' %}
             <div class="container container-demandas mb-3">
                 <h3 class="mt-5 pt-3">{{demanda.titulo}}</h3>
                 <p>{{demanda.descricao}}</p>
+                <a href="{{demanda.documento.url}}" download="{{demanda.documento.url}}">
+                    <button class="btn btn-success">Baixar documento</button>
+                </a>
                 <p>Criado por: {% for criador in demanda.criado_por.all %} {{criador}} {% endfor %} </p>
                 {% if demanda.prazo %}
                     <p style="color: red; font-weight: 600;">Prazo: {{ demanda.prazo }}</p>

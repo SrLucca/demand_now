@@ -11,7 +11,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 def homeView(request):
     if request.method == 'POST':
         user = CustomUser.objects.get(email=request.user.email)
-        data = ""
+        data = None
         titulo = str(request.POST['titulo'])
         descricao = str(request.POST['descricao'])
         tipo = str(request.POST['tipo'])
@@ -22,10 +22,15 @@ def homeView(request):
 
         if request.POST['doc']:
             file = request.POST['doc']
+            demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, documento=file)
+            demanda.criado_por.add(user)
+        else:
+            demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data)
+            demanda.criado_por.add(user)
         
 
-        demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, documento=file)
-        demanda.criado_por.add(user)
+        
+        
 
         messages.add_message(request, messages.SUCCESS, f"{tipo} cadastrada(o) com sucesso!")
     return render(request, 'pages/home.html')
@@ -38,6 +43,14 @@ def demandasView(request):
 
 
     return render(request, 'pages/verDemandas.html', {'demandas':demandas})
+
+@login_required(login_url='/entrar')
+def documentosView(request):
+
+    demandas = Demanda.objects.all()
+
+
+    return render(request, 'pages/verDocumentos.html', {'demandas':demandas})
 
 @login_required(login_url='/entrar')
 def demandaConcluida(request, id):
