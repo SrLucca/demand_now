@@ -42,8 +42,16 @@
 <div class="container text-center">
     {% for demanda in demandas %}
         {% if demanda.tipo == 'Demanda' %}
-            <div class="container container-demandas mb-3">
-                <h3 class="mt-5 pt-3">{{demanda.titulo}}</h3>
+            <div class="container container-demandas mb-3 mt-5">
+                {% if request.user.is_staff %}
+                    <form style="display: flex;
+                    justify-content: flex-end; padding-top: 0.5rem;" action="/deletar/{{demanda.tipo}}/{{demanda.id}}" method="post">
+                        {%csrf_token%}
+                        <button class="btn btn-danger">Excluir</button>
+                    </form>
+                    {% else %}
+                    {% endif %}
+                <h3 class="">{{demanda.titulo}}</h3>
                 <p>{{demanda.descricao}}</p>
                 <p>Criado por: {% for criador in demanda.criado_por.all %} {{criador}} {% endfor %} </p>
                 {% if demanda.prazo %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
 from django.contrib.auth.decorators import login_required
 from home.models import Demanda
 from register.models import CustomUser
@@ -62,6 +62,21 @@ def demandaConcluida(request, id):
 
     messages.add_message(request, messages.SUCCESS, "Demanda marcada como conluída!")
     return HttpResponseRedirect('/demandas')
+
+
+def deletarDemanda(request, tipo, id):
+
+    demanda = Demanda.objects.get(pk=id)
+    demanda.delete()
+
+    messages.add_message(request, messages.SUCCESS, "Demanda deletada com sucesso!")
+
+    if str(tipo) == 'Demanda':
+        return redirect('/demandas')
+    
+    if str(tipo) == 'Documento':
+        return redirect('/documentos')
+        
 
 @staff_member_required(login_url="/")
 @login_required(login_url='/entrar')

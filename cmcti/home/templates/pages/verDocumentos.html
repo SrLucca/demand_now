@@ -42,8 +42,18 @@
 <div class="container text-center">
     {% for demanda in demandas %}
         {% if demanda.tipo == 'Documento' %}
-            <div class="container container-demandas mb-3">
-                <h3 class="mt-5 pt-3">{{demanda.titulo}}</h3>
+            <div class="container container-demandas mb-3 mt-5">
+                {% if request.user.is_staff %}
+                    <form style="display: flex;
+                    justify-content: flex-end; padding-top: 0.5rem;" action="{{demanda.tipo}}/deletar/{{demanda.id}}" method="post">
+                        {%csrf_token%}
+                        <button class="btn btn-danger">Excluir</button>
+                    </form>
+                    {% else %}
+                    {% endif %}
+                <h3 class="">{{demanda.titulo}}</h3>
+                
+                
                 <p>{{demanda.descricao}}</p>
                 <a href="{{demanda.documento.url}}" download="{{demanda.documento.url}}">
                     <button class="btn btn-success">Baixar documento</button>
