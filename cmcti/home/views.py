@@ -4,6 +4,7 @@ from home.models import Demanda
 from register.models import CustomUser
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from home.thread import SendEmailThread
 
 # Create your views here.
 
@@ -24,9 +25,11 @@ def homeView(request):
             file = request.POST['doc']
             demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, documento=file)
             demanda.criado_por.add(user)
+            SendEmailThread(titulo).start()
         else:
             demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data)
             demanda.criado_por.add(user)
+            SendEmailThread(titulo).start()
         
 
         
