@@ -88,3 +88,30 @@ def usuariosView(request):
     usuarios = CustomUser.objects.all()
 
     return render(request, 'pages/usuarios.html', {'usuarios':usuarios})
+
+@staff_member_required(login_url="/")
+@login_required(login_url='/entrar')
+def usuariosUpgradeView(request, id):
+    usuario = CustomUser.objects.get(id=id)
+    if usuario.is_staff == False:
+        usuario.is_staff = True
+        usuario.save()
+        messages.add_message(request, messages.SUCCESS, "Usuário promovido a diretoria")
+        return redirect('/diretoria/usuarios')
+    else:
+        messages.add_message(request, messages.ERROR, "Usuário ja pertence à diretoria")
+        return redirect('/diretoria/usuarios')
+
+@staff_member_required(login_url="/")
+@login_required(login_url='/entrar')
+def usuariosDowngradeView(request, id):
+    usuario = CustomUser.objects.get(id=id)
+    if usuario.is_staff == True:
+        usuario.is_staff = False
+        usuario.save()
+        messages.add_message(request, messages.SUCCESS, "Cargo de diretoria desatribuído ao usuário")
+        return redirect('/diretoria/usuarios')
+    else:
+        messages.add_message(request, messages.ERROR, "Usuário não pertence à diretoria")
+        return redirect('/diretoria/usuarios')
+    

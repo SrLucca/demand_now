@@ -1,13 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+{% if messages %}
+    {% for message in messages %}
+        {% if 'error' in message.tags %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+{% endif %}
 <div style="background: #A0FFAA;" class="container mb-3">
     <h1 class="text-center">Usuarios</h1>
     {% for perfis in usuarios %}
         <div class="container text-center">
-            <h3>{{perfis.first_name}} {{perfis.last_name}}</h3>
-            <a style="text-decoration: none; color: red;" href=""><img src="{% static 'img/upgrade.png' %}" width="2%" alt=""> Promover</a>
+            <form action="" method="POST">
+                <h3>{{perfis.first_name}} {{perfis.last_name}}</h3>
+                <a style="text-decoration: none; color: red;" href="/diretoria/usuarios/promover/{{perfis.id}}"><img src="{% static 'img/upgrade.png' %}" width="2%" alt=""> Tornar Staff</a>
+                <a style="text-decoration: none; color: red;" href="/diretoria/usuarios/despromover/{{perfis.id}}"><img src="{% static 'img/downgrade.png' %}" width="2%" alt=""> Retirar Cargo</a>
+            </form>
         </div>
     {% endfor %}
 </div>
