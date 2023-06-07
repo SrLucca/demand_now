@@ -6,6 +6,9 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from home.thread import SendEmailThread
 
+from easy_pdf.rendering import render_to_pdf_response
+from datetime import datetime
+
 # Create your views here.
 
 @login_required(login_url='/entrar')
@@ -114,4 +117,15 @@ def usuariosDowngradeView(request, id):
     else:
         messages.add_message(request, messages.ERROR, "Usuário não pertence à diretoria")
         return redirect('/diretoria/usuarios')
+    
+
+@staff_member_required(login_url="/")
+@login_required(login_url='/entrar')
+def relatorioView(request):
+    demandas = Demanda.objects.all()
+    usuarios = CustomUser.objects.all()
+    data = datetime.today().strftime("%d/%m/%Y")
+
+    return render_to_pdf_response(request, 'pages/relatorio.html', {'demandas':demandas, 
+    'usuarios':usuarios, 'data':data})
     

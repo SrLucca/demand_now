@@ -1,0 +1,31 @@
+<h2 style="text-align: center;">Conselho Municipal de Ciencia, Tecnologia e Informacao</h2>
+<br>
+<p style="text-align: left;">Jatai, {{data}} </p>
+<br>
+<p style="text-align: left;">Participantes</p>
+<ul>
+    {% for usuario in usuarios %}
+        <li style="text-align: left;">{{usuario.first_name}} {{usuario.last_name}}, {{usuario.email}}</li>
+    {% endfor %}
+</ul>
+<br>
+<br>
+<p>Atividades realizadas</p>
+{% for demanda in demandas %}
+    {% if demanda.tipo != documento %}
+        <h3>{{demanda.titulo}}</h3>
+        <p>{{demanda.descricao}}</p>
+        {% if demanda.concluida == True %}
+            <p style="color: red;">Concluida</p>
+        {% else %}
+            <p>Nao concluida</p>
+        {% endif %} <!-- Correção feita aqui: endif em vez de endfor -->
+        
+        <p>Criada por: {% for criador in demanda.criado_por.all %} {{criador.first_name}} {{criador.last_name}} {% endfor %}</p>
+    {% endif %}
+    <hr>
+{% endfor %}
+
+<br>
+<br>
+<p style="text-align: center;">Secretaria de Desenvolvimento Economico</p>

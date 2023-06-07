@@ -53,14 +53,14 @@
 }
 
 .ddos2 h1:hover{
-    font-size: 24px;
+    font-size: 85%;
     transition: 0.2s all;
 }
 
 .ddos2 h1{
     font-family: sans-serif;
     color: #1C8226;
-    font-size: 22px;
+    font-size: 90%;
     padding-top: 3rem !important;
     font-weight: bold;
 }
@@ -79,13 +79,13 @@
 }
 
 .rede2 h1:hover{
-    font-size: 24px;
+    font-size: 80%;
     transition: 0.2s all;
 }
 
 .rede2 h1{
     font-family: sans-serif;
-    font-size: 22px;
+    font-size: 85%;
     color: #1C8226;
     padding-top: 3rem !important;
     font-weight: bold;

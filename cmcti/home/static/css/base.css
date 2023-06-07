@@ -1,3 +1,23 @@
 .input-group-text{
     height: 100% !important;
 }
+
+@media only screen and (max-width: 985px){
+
+    .input-group{
+        position: relative !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: stretch !important;
+        align-content: center !important;
+        justify-content: center !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        flex-direction: column;
+    }
+
+    .form-control{
+        width: 100% !important;
+    }
+    
+}

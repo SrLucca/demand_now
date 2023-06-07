@@ -9,4 +9,5 @@ urlpatterns = [
     path('diretoria/usuarios', views.usuariosView, name="usuariospage"),
     path('diretoria/usuarios/promover/<int:id>', views.usuariosUpgradeView, name="upgrade"),
     path('diretoria/usuarios/despromover/<int:id>', views.usuariosDowngradeView, name="upgrade"),
+    path('diretoria/relatorio', views.relatorioView, name="relatoriopage"),
 ]
