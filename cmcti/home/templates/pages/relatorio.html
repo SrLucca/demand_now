@@ -1,4 +1,4 @@
-<h2 style="text-align: center;">Conselho Municipal de Ciencia, Tecnologia e Informacao</h2>
+<h1 style="text-align: center;">Conselho Municipal de Ciencia, Tecnologia e Informacao</h1>
 <br>
 <p style="text-align: left;">Jatai, {{data}} </p>
 <br>
@@ -13,10 +13,10 @@
 <p>Atividades realizadas</p>
 {% for demanda in demandas %}
     {% if demanda.tipo != documento %}
-        <h3>{{demanda.titulo}}</h3>
-        <p>{{demanda.descricao}}</p>
+        <h2>{{demanda.titulo}}</h2>
+        <h3>{{demanda.descricao}}</h3>
         {% if demanda.concluida == True %}
-            <p style="color: red;">Concluida</p>
+            <h3 style="color: red;">Concluida</p>
         {% else %}
             <p>Nao concluida</p>
         {% endif %} <!-- Correção feita aqui: endif em vez de endfor -->
