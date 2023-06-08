@@ -16,9 +16,10 @@ class SendEmailThread(threading.Thread):
             usuarios = CustomUser.objects.all()
             for user in usuarios:
                 send_mail(
-                    'Teste de email',
-                    f'Nova demanda/documento "{str(self.titulo)}"',
-                    'postmaster@sandboxce9ade16d0b84956b2c4ead073df9477.mailgun.org',
+                    'Nova demanda cadastrada na plataforma CMCTI',
+                    f'Nova demanda/documento "{str(self.titulo)}" cadastrada(o)\nAcesse a '+
+                    'plataforma para mais informações\n\nSistema CMCTI',
+                    'cmctisistema@gmail.com',
                     [f'{user.email}'],
                     fail_silently=False,
                 )
