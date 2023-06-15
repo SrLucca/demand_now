@@ -25,9 +25,9 @@
             <input type="file" accept="image/*" name="img" id="input_image" alt="">
             <button type="submit" class="btn btn-success">Alterar Imagem</button>
         </form>
+        <h1>{{request.user.first_name}} {{request.user.last_name}}</h1> 
         {% if request.user.is_staff %}
         <div>
-            <h1>{{request.user.username}}</h1> 
             <p style="color: red; background-color: #A0FFAA; border-radius: 10px; font-weight: 700;" >Diretoria</p>
         </div>
             {% else %}
