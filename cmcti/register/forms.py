@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from register.models import CustomUser
+from register.models import CustomUser, Profile
 
 class CustomAuthenticationForm(AuthenticationForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'autofocus': True}))

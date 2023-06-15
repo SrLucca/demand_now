@@ -46,6 +46,21 @@ def logoutView(request):
 
 @login_required(login_url='/entrar')
 def configProfile(request):
+
     user = CustomUser.objects.filter(username=request.user.username)
+
+    change_img = Profile.objects.get(user=request.user)
+
+
+    if request.method == 'POST':
+        file = request.FILES['img']
+
+        change_img.profile_image = file
+        change_img.save()
+
+        messages.add_message(request, messages.SUCCESS, "Foto de perfil atualizada!")
+        return redirect('/perfil')
+    else:
+        pass
 
     return render(request, 'pages/perfil.html', {'objetos': user})

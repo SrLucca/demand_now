@@ -19,13 +19,12 @@ def homeView(request):
         titulo = str(request.POST['titulo'])
         descricao = str(request.POST['descricao'])
         tipo = str(request.POST['tipo'])
-        file = request.POST or None
+        file = request.FILES['doc'] or None
 
         if request.POST['data']:
             data = str(request.POST['data'])
 
-        if request.POST['doc']:
-            file = request.POST['doc']
+        if file:
             demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, documento=file)
             demanda.criado_por.add(user)
             SendEmailThread(titulo).start()

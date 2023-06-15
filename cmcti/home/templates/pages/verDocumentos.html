@@ -45,7 +45,7 @@
             <div class="container container-demandas mb-3 mt-5">
                 {% if request.user.is_staff %}
                     <form style="display: flex;
-                    justify-content: flex-end; padding-top: 0.5rem;" action="{{demanda.tipo}}/deletar/{{demanda.id}}" method="post">
+                    justify-content: flex-end; padding-top: 0.5rem;" action="deletar/{{demanda.tipo}}/{{demanda.id}}" method="post">
                         {%csrf_token%}
                         <button class="btn btn-danger">Excluir</button>
                     </form>
