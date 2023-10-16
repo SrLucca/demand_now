@@ -13,6 +13,8 @@ from datetime import datetime
 
 @login_required(login_url='/entrar')
 def homeView(request):
+    
+
     if request.method == 'POST':
         user = CustomUser.objects.get(email=request.user.email)
         data = None

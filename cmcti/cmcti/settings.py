@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'home',
     'register',
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,3 +153,7 @@ EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'cmctisistema@gmail.com'
 EMAIL_HOST_PASSWORD = 'dntbexgtirnahcyo'
 DEFAULT_FROM_EMAIL= 'cmctisistema@gmail.com'
+
+CRONJOBS = [
+    ('*/1 * * * *', 'home.cron.send_email')
+]
