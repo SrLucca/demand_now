@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from home.thread import SendEmailThread
 
-from easy_pdf.rendering import render_to_pdf_response
+#from easy_pdf.rendering import render_to_pdf_response
 from datetime import datetime
 
 # Create your views here.
