@@ -155,5 +155,5 @@ EMAIL_HOST_PASSWORD = 'dntbexgtirnahcyo'
 DEFAULT_FROM_EMAIL= 'cmctisistema@gmail.com'
 
 CRONJOBS = [
-    ('*/1 * * * *', 'home.cron.send_email')
+    ('*/1 * * * *', 'home.cron.send_email', '>> /mnt/c/Users/lukss/OneDrive/Documentos/GitHub/demand_now/cmcti/logs/file.log')
 ]
