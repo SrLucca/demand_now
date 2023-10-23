@@ -6,6 +6,9 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from home.thread import SendEmailThread
 
+#consume api
+import requests
+from django.http import HttpResponse
 #from easy_pdf.rendering import render_to_pdf_response
 from datetime import datetime
 
@@ -13,6 +16,12 @@ from datetime import datetime
 
 @login_required(login_url='/entrar')
 def homeView(request):
+    
+    response = requests.get('http://127.0.0.1:8080/items/')
+    
+    #convert reponse data into json
+    api_data = response.json()
+    print(api_data)
     
 
     if request.method == 'POST':
