@@ -2,3 +2,6 @@
 .env
 .pem
 chaveapi.pem
+*.pyc
+*.pyc
+*.log
