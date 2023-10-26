@@ -9,6 +9,7 @@ from home.thread import SendEmailThread
 #consume api
 import requests
 from django.http import HttpResponse
+import json
 #from easy_pdf.rendering import render_to_pdf_response
 from datetime import datetime
 
@@ -21,7 +22,10 @@ def homeView(request):
     
     #convert reponse data into json
     api_data = response.json()
-    print(api_data)
+    data_list = []
+    for objs in api_data:
+        data_list.append(objs)
+        
     
 
     if request.method == 'POST':
@@ -49,7 +53,7 @@ def homeView(request):
         
 
         messages.add_message(request, messages.SUCCESS, f"{tipo} cadastrada(o) com sucesso!")
-    return render(request, 'pages/home.html')
+    return render(request, 'pages/home.html', {'products': data_list})
 
 
 @login_required(login_url='/entrar')
