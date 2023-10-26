@@ -5,3 +5,4 @@ chaveapi.pem
 *.pyc
 *.pyc
 *.log
+*.pyc
