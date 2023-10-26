@@ -18,7 +18,7 @@ return to fastapi
 '''
 
 
-#uvicorn main:app --port 8080
+#uvicorn main:app --port 8080 --reload
 
 #create databse tables
 models.Base.metadata.create_all(bind=engine)
