@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(176, 220, 176);
+}
+
+.navbar{
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: green;
+    justify-content: space-around;
+    align-items: center;
+}
+.navbar nav{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    margin-right: 1.5rem;
+}
+
+.painel{
+    display: flex;
+    width: 90%;
+    background-color: rgb(123, 195, 123);
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    top: 5rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}

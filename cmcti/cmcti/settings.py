@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'home',
     'register',
+    'employees',
     'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
