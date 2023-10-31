@@ -24,15 +24,34 @@ body{
 }
 
 .painel{
-    display: flex;
-    width: 90%;
-    background-color: rgb(123, 195, 123);
+
     margin-right: auto;
     margin-left: auto;
     position: relative;
     top: 5rem;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    flex-wrap: nowrap;
+
+}
+
+.painel form{
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

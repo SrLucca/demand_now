@@ -17,31 +17,67 @@
         </nav>
     </div>
 
-    <div class="painel">
-        <table>
-            <tr>
-                <th>Company</th>
-                <th>Contact</th>
-                <th>Country</th>
-            </tr>
-            <tr>
-                <td>Foda</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Brazil</td>
-                <td>Francisco</td>
-                <td>Mexico</td>
-            </tr>
 
+    <div class="painel">
+        <form action="" method="get">
+            <label for="search">Buscar:</label>
+            <input type="text" id="search" class="search">
+            <button type="submit">Ok</button>
+        </form>
+        <table id="table">
             <tr>
-                <td>Mexico</td>
-                <td>Mexico</td>
-                <td>Mexico</td>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Valor R$</th>
+                <th>Adicionado por</th>
+                <th></th>
             </tr>
-            
+            <tr>
+                <td>2</td>
+                <td>Produto 2</td>
+                <td>Descrição do produto 2</td>
+                <td>10,00</td>
+                <td>Lucca</td>
+                <td><button>D</button><button>E</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Produto 1</td>
+                <td>Descrição do produto 1</td>
+                <td>20,00</td>
+                <td>Lucca</td>
+                <td><button>D</button><button>E</button></td>
+            </tr>
         </table>
+        <button onclick="newLine()">Adicionar</button>
     </div>
 </body>
+
+<script>
+    function newLine(){
+        // Find a <table> element with id="myTable":
+        var table = document.getElementById("table");
+
+        // Create an empty <tr> element and add it to the 1st position of the table:
+        var row = table.insertRow(1);
+
+        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+
+        // Add some text to the new cells:
+        cell1.innerHTML = "3";
+        cell2.innerHTML = "<input type='text' id='search' class='search'>";
+        cell3.innerHTML = "<input type='text' id='search' class='search'>";
+        cell4.innerHTML = "<input type='text' id='search' class='search'>";
+        cell5.innerHTML = "<input type='text' id='search' class='search'>";
+        cell6.innerHTML = "<button>A</button>";
+    }
+
+</script>
 </html>
