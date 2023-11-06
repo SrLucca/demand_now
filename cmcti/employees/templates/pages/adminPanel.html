@@ -24,33 +24,30 @@
             <input type="text" id="search" class="search">
             <button type="submit">Ok</button>
         </form>
-        <table id="table">
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Valor R$</th>
-                <th>Adicionado por</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Produto 2</td>
-                <td>Descrição do produto 2</td>
-                <td>10,00</td>
-                <td>Lucca</td>
-                <td><button>D</button><button>E</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Produto 1</td>
-                <td>Descrição do produto 1</td>
-                <td>20,00</td>
-                <td>Lucca</td>
-                <td><button>D</button><button>E</button></td>
-            </tr>
-        </table>
-        <button onclick="newLine()">Adicionar</button>
+        <form action="" method="post" id="newRegister">
+            {% csrf_token %}
+            <table id="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Valor R$</th>
+                    <th>Adicionado por</th>
+                    <th></th>
+                </tr>
+                {% for product in products %}
+                    <tr>
+                        <td>{{product.id}}</td>
+                        <td>{{product.title}}</td>
+                        <td>{{product.description}}</td>
+                        <td>10,00</td>
+                        <td>{{product.users.email}}</td>
+                        <td><button>D</button><button>E</button></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <button type="button" onclick="newLine()">Adicionar</button>
+        </form>
     </div>
 </body>
 
@@ -76,7 +73,13 @@
         cell3.innerHTML = "<input type='text' id='search' class='search'>";
         cell4.innerHTML = "<input type='text' id='search' class='search'>";
         cell5.innerHTML = "<input type='text' id='search' class='search'>";
-        cell6.innerHTML = "<button>A</button>";
+        cell6.innerHTML = "<button onclick='submitForm()'>A</button>";
+
+    }
+
+    function submitForm(){
+
+        var form = document.getElementById('newRegister').submit();
     }
 
 </script>
