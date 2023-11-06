@@ -18,13 +18,13 @@ from datetime import datetime
 @login_required(login_url='/entrar')
 def homeView(request):
     
-    '''response = requests.get('http://127.0.0.1:8080/items/')
+    response = requests.get('http://127.0.0.1:8080/items/')
     
     #convert reponse data into json
     api_data = response.json()
     data_list = []
     for objs in api_data:
-        data_list.append(objs)'''
+        data_list.append(objs)
         
     
 
@@ -54,10 +54,10 @@ def homeView(request):
 
         messages.add_message(request, messages.SUCCESS, f"{tipo} cadastrada(o) com sucesso!")
 
-    '''context = {
+    context = {
         'products': data_list
-    }'''
-    return render(request, 'pages/home.html')
+    }
+    return render(request, 'pages/home.html', context)
 
 
 @login_required(login_url='/entrar')
