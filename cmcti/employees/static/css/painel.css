@@ -55,3 +55,24 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+/* Style buttons */
+.btn {
+    background: transparent !important;
+    border: none; /* Remove borders */
+    color: black; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+  /* Darker background on mouse-over */
+.btn:hover {
+    color: green;
+}
+
+.message{
+    width: 100%;
+    background: rgb(93, 228, 93);
+    color: black;
+}
