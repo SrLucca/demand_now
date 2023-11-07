@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/painel.css' %}">
+    <script src="https://kit.fontawesome.com/492e9335be.js" crossorigin="anonymous"></script>
+    
     <title>Painel Admin</title>
 </head>
 <body>
@@ -17,6 +19,13 @@
         </nav>
     </div>
 
+    {% if message %}
+        {% for msg in message %}
+            <div class="message">
+                {{msg}}
+            </div>
+        {% endfor %}
+    {% endif %}
 
     <div class="painel">
         <form action="" method="get">
@@ -42,12 +51,12 @@
                         <td>{{product.description}}</td>
                         <td>10,00</td>
                         <td>{{product.users.email}}</td>
-                        <td><button>D</button><button>E</button></td>
+                        <td><button class="btn"><i class="fa-solid fa-trash"></i></button><button class="btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
                     </tr>
                 {% endfor %}
             </table>
-            <button type="button" onclick="newLine()">Adicionar</button>
         </form>
+        <button type="button" id="add" onclick="newLine()" class="btn"><i class="fa-regular fa-square-plus"></i> Adicionar Registro</button>
     </div>
 </body>
 
@@ -58,6 +67,16 @@
 
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(1);
+        
+        //get last id to increment
+        var x = document.getElementById("table").rows.length;
+        var last_row = document.getElementById("table").rows[(x-1)];
+        var last_id = last_row.querySelector("td:nth-child(1)").innerHTML;
+
+        //block button add to add one per time
+        var add_button = document.getElementById('add').disabled = true;
+        var add_button_cursor = document.getElementById('add').style.cursor = "no-drop";
+
 
         // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
         var cell1 = row.insertCell(0);
@@ -68,13 +87,15 @@
         var cell6 = row.insertCell(5);
 
         // Add some text to the new cells:
-        cell1.innerHTML = "3";
-        cell2.innerHTML = "<input type='text' id='search' class='search'>";
-        cell3.innerHTML = "<input type='text' id='search' class='search'>";
-        cell4.innerHTML = "<input type='text' id='search' class='search'>";
-        cell5.innerHTML = "<input type='text' id='search' class='search'>";
-        cell6.innerHTML = "<button onclick='submitForm()'>A</button>";
+        cell1.innerHTML = "" + (parseInt(last_id)  + 1);
+        cell2.innerHTML = "<input type='text' id='search' class='search' name='title'>";
+        cell3.innerHTML = "<input type='text' id='search' class='search' name='desc'>";
+        cell4.innerHTML = "<input type='number' id='search' class='search' name='value'>";
+        cell5.innerHTML = "<input type='text' id='search' class='search' value='{{request.user.username}}' name='by' disabled='disabled'>";
+        cell6.innerHTML = "<button onclick='submitForm()' class='btn'><i class='fa-regular fa-square-plus'></i></button>";
 
+        console.log(last_row);
+        console.log(last_id);
     }
 
     function submitForm(){
