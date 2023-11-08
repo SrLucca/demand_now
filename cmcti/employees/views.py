@@ -12,6 +12,11 @@ import json
 def painelAdmin(request):
 
     response = requests.get('http://127.0.0.1:8080/items/')
+    print(response)
+    #user = requests.get(f'http://127.0.0.1:8080/users/{request.user}')
+
+    #user_data = user.json()
+    #user_id = user_data['id']
     
     #convert reponse data into json
     api_data = response.json()
@@ -23,20 +28,23 @@ def painelAdmin(request):
         'products': data_list
     }
 
+
     if request.method == 'POST':
         title = request.POST['title']
         description = request.POST['desc']
         value = request.POST['value']
         add_by = request.user.first_name
 
+        
+
         json_data = {
             'title': title,
             'description': description,
-            'value': value,
+            'price': value,
             'owner': add_by
         }
 
-        new_request = requests.post('http://127.0.0.1:8080/users/1/items', json=json_data)
+        new_request = requests.post(f'http://127.0.0.1:8080/users/{user_id}/items', json=json_data)
         messages.add_message(request, messages.SUCCESS, "Registro adicionado com sucesso!")
         return redirect('/painel-admin')
     return render(request, 'pages/adminPanel.html', context)
