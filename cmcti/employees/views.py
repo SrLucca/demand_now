@@ -11,12 +11,13 @@ import json
 @login_required(login_url='/entrar')
 def painelAdmin(request):
 
-    response = requests.get('http://127.0.0.1:8080/items/')
-    print(response)
-    #user = requests.get(f'http://127.0.0.1:8080/users/{request.user}')
+    response = requests.get('http://127.0.0.1:8080/users/')
 
-    #user_data = user.json()
-    #user_id = user_data['id']
+    print(response)
+    user = requests.get(f'http://127.0.0.1:8080/users/{request.user}')
+
+    user_data = user.json()
+    user_id = user_data['id']
     
     #convert reponse data into json
     api_data = response.json()
@@ -24,6 +25,7 @@ def painelAdmin(request):
     for objs in api_data:
         data_list.append(objs)
     
+    print(data_list)
     context = {
         'products': data_list
     }
