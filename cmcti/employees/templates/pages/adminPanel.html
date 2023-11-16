@@ -45,14 +45,16 @@
                     <th></th>
                 </tr>
                 {% for product in products %}
-                    <tr>
-                        <td>{{product.id}}</td>
-                        <td>{{product.title}}</td>
-                        <td>{{product.description}}</td>
-                        <td>{{product.price}}</td>
-                        <td>{{product.owner}}</td>
-                        <td><button class="btn"><i class="fa-solid fa-trash"></i></button><button class="btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
-                    </tr>
+                    {% for obj in product.items %}
+                        <tr>
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.title}}</td>
+                            <td>{{obj.description}}</td>
+                            <td>{{obj.price}}</td>
+                            <td>{{product.email}}</td>
+                            <td><button class="btn"><i class="fa-solid fa-trash"></i></button><button class="btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
+                        </tr>
+                    {% endfor %}
                 {% endfor %}
             </table>
         </form>
@@ -91,7 +93,7 @@
         cell2.innerHTML = "<input type='text' id='search' class='search' name='title'>";
         cell3.innerHTML = "<input type='text' id='search' class='search' name='desc'>";
         cell4.innerHTML = "<input type='number' id='search' class='search' name='value'>";
-        cell5.innerHTML = "<input type='text' id='search' class='search' value='{{request.user.username}}' name='by' disabled='disabled'>";
+        cell5.innerHTML = "<input type='text' id='search' class='search' value='{{request.user}}' name='by' disabled='disabled'>";
         cell6.innerHTML = "<button onclick='submitForm()' class='btn'><i class='fa-regular fa-square-plus'></i></button>";
 
         console.log(last_row);
