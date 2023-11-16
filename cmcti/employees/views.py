@@ -35,7 +35,7 @@ def painelAdmin(request):
         title = request.POST['title']
         description = request.POST['desc']
         value = request.POST['value']
-        add_by = request.user.first_name
+        add_by = request.user
 
         
 
