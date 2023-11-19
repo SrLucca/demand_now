@@ -17,14 +17,17 @@ from datetime import datetime
 
 @login_required(login_url='/entrar')
 def homeView(request):
-    
-    response = requests.get('http://127.0.0.1:8080/items/')
-    
-    #convert reponse data into json
-    api_data = response.json()
     data_list = []
-    for objs in api_data:
-        data_list.append(objs)
+
+    try:
+        response = requests.get('http://127.0.0.1:8080/items/')
+    
+        #convert reponse data into json
+        api_data = response.json()
+        for objs in api_data:
+            data_list.append(objs)
+    except:
+        pass
         
     
 
@@ -35,16 +38,17 @@ def homeView(request):
         descricao = str(request.POST['descricao'])
         tipo = str(request.POST['tipo'])
         file = request.FILES['doc'] or None
+        product = str(request.POST['products']) or ""
 
         if request.POST['data']:
             data = str(request.POST['data'])
 
         if file:
-            demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, documento=file)
+            demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, documento=file, produto=product)
             demanda.criado_por.add(user)
             SendEmailThread(titulo).start()
         else:
-            demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data)
+            demanda = Demanda.objects.create(titulo=titulo, tipo=tipo, descricao=descricao, prazo=data, produto=product)
             demanda.criado_por.add(user)
             SendEmailThread(titulo).start()
         
