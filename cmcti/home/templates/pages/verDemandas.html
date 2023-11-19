@@ -54,6 +54,12 @@
                 <h3 class="">{{demanda.titulo}}</h3>
                 <p>{{demanda.descricao}}</p>
                 <p>Criado por: {% for criador in demanda.criado_por.all %} {{criador}} {% endfor %} </p>
+                
+                {% if demanda.produto %}
+                    <p>Produto: {{demanda.produto}}</p>
+                {% else %}
+                {% endif %}
+
                 {% if demanda.prazo %}
                     <p style="color: red; font-weight: 600;">Prazo: {{ demanda.prazo }}</p>
                 {% endif %}

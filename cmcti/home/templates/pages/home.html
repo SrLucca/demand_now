@@ -65,11 +65,11 @@
 
     <br>
     
-    <label for="cars">Produto a ser comprado</label>
+    <label for="products">Produto a ser comprado</label>
 
-    <select name="cars" id="cars" class="input-group w-50 mb-3">
+    <select name="products" id="products" class="input-group w-50 mb-3">
         {% for product in products %}
-        <option value="{{product.id}}">{{product.title}}</option>
+        <option value="{{product.title}}">{{product.title}}</option>
         {% endfor %}
     </select>
 
