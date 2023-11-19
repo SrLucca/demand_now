@@ -15,6 +15,7 @@ class Demanda(models.Model):
     descricao = models.TextField(blank=False, null=False)
     prazo = models.DateField(blank=True, null=True)
     documento = models.FileField(blank=True, upload_to='documentos', null=True)
+    produto = models.TextField(blank=True, null=True)
     criado_por = models.ManyToManyField(CustomUser)
     concluida = models.BooleanField(blank=True, null=True, default=False)
 
